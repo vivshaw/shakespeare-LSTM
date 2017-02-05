@@ -10,7 +10,8 @@ def index():
                                title="0x53 48 41 4b 45")
 
     if request.method == 'POST':
-        message = net.generate()
+        seed_pattern = net.make_seed()
+        message = net.generate(seed_pattern)
 
         return render_template('index.html',
                                title="0x53 48 41 4b 45",

@@ -26,14 +26,12 @@ class GenerativeNetwork:
         self.model.load_weights(weights_path)
         self.model.compile(loss='categorical_crossentropy', optimizer='adam')
 
-    def generate(self, seed_phrase=""):
-        seed_pattern = self.make_seed(seed_phrase)
-        generated_text = ""
-
+    def generate(self, seed_pattern):
         X = np.zeros((1, self.sentence_length, self.num_chars), dtype=np.bool)
         for i, character in enumerate(seed_pattern):
             X[0, i, self.encoding[character]] = 1
 
+        generated_text = ""
         for i in range(500):
             prediction = np.argmax(self.model.predict(X, verbose=0))
 
@@ -46,7 +44,7 @@ class GenerativeNetwork:
         formatted_text = self.format(generated_text)
         return formatted_text
 
-    def make_seed(self, seed_phrase):
+    def make_seed(self, seed_phrase=""):
         if seed_phrase:
             phrase_length = len(seed_phrase)
             pattern = ""
