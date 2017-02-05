@@ -1,14 +1,17 @@
 from app import app
+from flask import render_template, request
 from generative_net import GenerativeNetwork
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     net = GenerativeNetwork("sonnets.txt", "model.yaml", "weights.hdf5")
-    message = net.generate()
+    if request.method == 'GET':
+        return render_template('index.html',
+                               title="0x53 48 41 4b 45")
 
-    output = ""
-    for line in message:
-        output += "<p>" + line + "</p>"
+    if request.method == 'POST':
+        message = net.generate()
 
-    return output
+        return render_template('index.html',
+                               title="0x53 48 41 4b 45",
+                               message=message)
