@@ -1,11 +1,11 @@
 import numpy as np
-from keras.models import Sequential
+from keras.models import Sequential, model_from_yaml
 from keras.layers import LSTM, Dense, Activation
 from random import randint
 import timeit
 
 class GenerativeNetwork:
-    def __init__(self, corpus_path, weights):
+    def __init__(self, corpus_path, model_path, weights_path):
         with open(corpus_path) as corpus_file:
             self.corpus = corpus_file.read()
 
@@ -15,17 +15,17 @@ class GenerativeNetwork:
         self.encoding = {c: i for i, c in enumerate(self.chars)}
         self.decoding = {i: c for i, c in enumerate(self.chars)}
 
-        # Some useful vars
+        # Some fields we'll need later
         self.num_chars = len(self.chars)
         self.sentence_length = 50
         self.corpus_length = len(self.corpus)
 
-        # Build our network
-        self.model = Sequential()
-        self.model.add(LSTM(256, input_shape=(self.sentence_length, self.num_chars)))
-        self.model.add(Dense(self.num_chars))
-        self.model.add(Activation('softmax'))
-        self.model.load_weights(weights)
+        # Build our network from loaded architecture and weights
+        with open(model_path) as model_file:
+            architecture = model_file.read()
+
+        self.model = model_from_yaml(architecture)
+        self.model.load_weights(weights_path)
         self.model.compile(loss='categorical_crossentropy', optimizer='adam')
 
     def generate(self, seed_phrase=""):
