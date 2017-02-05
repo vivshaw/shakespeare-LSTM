@@ -4,7 +4,7 @@ from generative_net import GenerativeNetwork
 @app.route('/')
 @app.route('/index')
 def index():
-    net = GenerativeNetwork("sonnets.txt", "weights-29-0.8985.hdf5")
+    net = GenerativeNetwork("sonnets.txt", "weights.hdf5")
     message = net.generate()
 
     output = ""
