@@ -58,11 +58,14 @@ class GenerativeNetwork:
 
     def format(self, text):
         formatted = text.split("\n")
+
+        # The first and last line cut off in the middle, so we'll ditch them
         formatted = formatted[1:len(formatted) - 1]
 
-        if len(formatted[0]) <= 3:
-            formatted = formatted[1:]
+        # Eliminate empty strings, strings that are just newlines, or other improper strings
+        formatted = [string for string in formatted if len(string) > 3]
 
+        # Put a period on our last string, replacing other punctuation if it's there.
         if formatted[-1][-1].isalnum():
             formatted[-1] += "."
         else:
