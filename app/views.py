@@ -1,5 +1,5 @@
 from app import app
-from app.predicter_nnet import GenerativeNetwork
+from app.generative_net import GenerativeNetwork
 
 @app.route('/')
 @app.route('/index')
