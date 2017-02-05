@@ -53,6 +53,11 @@ model.add(Dense(num_chars))
 model.add(Activation('softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam')
 
+# Dump our model architecture to a file so we can load it elsewhere
+architecture = model.to_yaml()
+with open('model.yaml', 'a') as model_file:
+    model_file.write(architecture)
+
 # Set up checkpoints
 file_path="weights-{epoch:02d}-{loss:.4f}.hdf5"
 checkpoint = ModelCheckpoint(file_path, monitor="loss", verbose=1, save_best_only=True, mode="min")
