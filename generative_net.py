@@ -63,6 +63,10 @@ class GenerativeNetwork:
     def format(self, text):
         formatted = text.split("\n")
         formatted = formatted[1:len(formatted) - 1]
+
+        if len(formatted[0]) <= 3:
+            formatted = formatted[1:]
+
         if formatted[-1][-1].isalnum():
             formatted[-1] += "."
         else:
