@@ -1,8 +1,6 @@
 import numpy as np
-from keras.models import Sequential, model_from_yaml
-from keras.layers import LSTM, Dense, Activation
+from keras.models import model_from_yaml
 from random import randint
-import timeit
 
 class GenerativeNetwork:
     def __init__(self, corpus_path, model_path, weights_path):
