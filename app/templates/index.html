@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="padding: 30px;">
+        <div style="border: 1px solid black; padding: 10px;">
+            <form method="post">
+                <button>Sing a song</button> O bard- a song of <input name="seed" value="">
+            </form>
+        </div>
+    <div style="margin-top:20px;"></div>
+    {% for line in message %}
+        <p style="{% if loop.revindex0 <= 1 %}margin-left: 15px{% endif %}">{{ line }}</p>
+    {% endfor %}
+    </div>
+{% if seed %}{{ seed }}{% endif %}
+</div>
+{% endblock %}
