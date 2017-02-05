@@ -22,7 +22,7 @@ def index():
             words = word_list[i:i + 3]
             seed_phrase = " ".join(words)
 
-        return render_template('index.html',
+        return render_template('sonnet.html',
                                title="0x53 48 41 4b 45",
                                message=message,
                                seed=seed_phrase)

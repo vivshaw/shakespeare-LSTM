@@ -6,11 +6,5 @@
                 <button>Sing a song</button> O bard- a song of <input name="seed" value="">
             </form>
         </div>
-    <div style="margin-top:20px;"></div>
-    {% for line in message %}
-        <p style="{% if loop.revindex0 <= 1 %}margin-left: 15px{% endif %}">{{ line }}</p>
-    {% endfor %}
-    </div>
-{% if seed %}{{ seed }}{% endif %}
 </div>
 {% endblock %}
