@@ -16,6 +16,7 @@ def tag_seed(seed):
 def index():
 
     net = GenerativeNetwork("sonnets.txt", "model.yaml", "weights.hdf5")
+
     if request.method == 'GET':
         seed = net.make_seed()
         seed_tag = tag_seed(seed)

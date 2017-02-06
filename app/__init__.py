@@ -2,6 +2,7 @@ from flask import Flask
 import os
 
 app = Flask(__name__)
+
 if os.environ.get('HEROKU') is None:
     app.config.from_object('config')
 else:
