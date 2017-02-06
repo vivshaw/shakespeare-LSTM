@@ -21,7 +21,9 @@ def index():
         seed = net.make_seed()
         seed_tag = tag_seed(seed)
 
-        sonnet_form = SonnetForm(seed=seed, seed_tag=seed_tag)
+        sonnet_form = SonnetForm()
+        sonnet_form.seed.data = seed
+        sonnet_form.seed_tag.data = seed_tag
 
         return render_template('index.html',
                                title='0x53 48 41 4b 45',
@@ -32,6 +34,7 @@ def index():
         old_seed = request.form['seed']
         old_seed_tag = request.form['seed_tag']
         old_seed_phrase = request.form['seed_phrase']
+        print("seed", old_seed)
 
         if old_seed_phrase:
             old_seed_tag = old_seed_phrase
@@ -43,11 +46,16 @@ def index():
         seed = net.make_seed()
         seed_tag = tag_seed(seed)
 
-        sonnet_form = SonnetForm(seed=seed, seed_tag=seed_tag)
+        # Make the form
+        sonnet_form = SonnetForm()
+        sonnet_form.seed.data = seed
+        sonnet_form.seed_tag.data = seed_tag
+        sonnet_form.seed_phrase.data = ""
 
         return render_template('sonnet.html',
-                               title= '0x53 48 41 4b 45',
+                               title='0x53 48 41 4b 45',
                                message=message,
                                old_seed_tag=old_seed_tag,
+                               seed=seed,
                                seed_tag=seed_tag,
                                form=sonnet_form)
