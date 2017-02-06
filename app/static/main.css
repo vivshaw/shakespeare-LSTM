@@ -14,3 +14,11 @@
 body {
   padding-top: 2rem;
 }
+
+.media-border {
+    padding-left: 5px;
+}
+
+.top-jumbo {
+    padding-bottom: 32px;
+}

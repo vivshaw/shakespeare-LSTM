@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="jumbotron">
+<div class="jumbotron top-jumbo">
   <div class="container">
     <h1 class="display-3">An Ode to {{ old_seed_tag|title  }}</h1>
   </div>
@@ -13,12 +13,15 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
         {% for line in message %}
             <p class="{% if loop.revindex0 <= 1 %}indent{% endif %}">{{ line }}</p>
         {% endfor %}
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
+        <div class="card">
+            <img class="card-img-top img-fluid" src="/static/shake-med.png" alt="Card image cap">
+            <div class="card-block">
         <form method="post">
             {{ form.hidden_tag() }}
 
@@ -27,9 +30,9 @@
                 {{ form.seed_tag }}
             </div>
 
-            <div class="unseed-div">
-                <p><button class="btn btn-primary">Query the Bard again?</button></p>
+            <div>
                 <p>I have another poem brewing. It's about {{ form.seed_tag.data }}.</p>
+                <p><button class="btn btn-primary">Read my next poem?</button></p>
                 <p>Or, you could <a href="#" id="enable-seed" onclick="getElementById('seed-div').classList.remove('hidden');">feed me some inspiration</a>.</p>
             </div>
 
@@ -37,6 +40,8 @@
                 Bard, <button class="btn btn-primary">pen me a sonnet</button> about {{ form.seed_phrase(size=30) }}
             </div>
         </form>
+            </div>
+        </div>
     </div>
    </div>
 </div>

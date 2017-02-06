@@ -5,11 +5,13 @@
 {% endblock %}
 
 {% block content %}
-<div class="jumbotron">
+<div class="jumbotron top-jumbo">
   <div class="container">
-    <h1 class="display-3">Robot Shakespeare</h1>
-    <p>I am a neural network-powered resurrection of William Shakespeare. I'm tirelessly at work writing new sonnets. I'll even write one on a topic of your choosing, if you like.</p>
-    <form method="post" >
+      <div class="media media-border">
+          <div class="media-body">
+              <h1 class="display-3">Robot Shakespeare</h1>
+              <p>I am a neural network-powered resurrection of William Shakespeare. I'm tirelessly at work writing new sonnets. I'll even write one on a topic of your choosing, if you like.</p>
+              <form method="post" >
             {{ form.hidden_tag() }}
             <div class="hidden">
                 {{ form.seed }}
@@ -17,13 +19,24 @@
             </div>
 
             <div class="unseed-div">
-                <p><button class="btn btn-primary">I've penned a new one just for you:</button> an ode to {{ form.seed_tag.data }}. Or, you can <a href="#" id="enable-seed" onclick="getElementById('seed-div').classList.remove('hidden');">feed me some inspiration</a>.</p>
+                <p>I've penned a new one just for you: an ode to {{ form.seed_tag.data }}.</p>
+                <p><button class="btn btn-primary">Read my latest poem?</button></p>
+                <p>Or, you can <a href="" data-toggle="modal" data-target="#sonnetModal">
+  feed me some inspiration.</a></p>
             </div>
 
             <div id="seed-div" class="hidden">
                 Bard, <button class="btn btn-primary">pen me a sonnet</button> about {{ form.seed_phrase(size=30) }}
             </div>
-    </form>
+
+            </form>
+
+
+          </div>
+          <img class="d-flex align-self-center ml-3" src="/static/shake-small.png" alt="Generic placeholder image">
+      </div>
+
+
   </div>
 </div>
 
@@ -31,7 +44,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2>How does it work?</h2>
-        <p><em>0x53 48 41 4b 45</em> is a neural network written in Python with the Keras deep learning library using a TensorFlow backend, and trained on a specially formatted corpus of Shakespeare's sonnets. It is an LSTM network, a type of recurrent neural network especially well-suited to time-series prediction. We are using this network to generate text by feeding it a seed phrase, then repeatedly predicting the next most likely character and feeding the result back into the system. As you can see, even a very simple model without any pre-programmed natural language processing capabilities can achieve surprisingly coherent results, not only in word construction, but even in learning some high-level features of the sonnet form. This is why neural networks are so cool!</p>
+        <p><em>0x53 48 41 4b 45</em> is a neural network written in Python with the Keras deep learning library using a TensorFlow backend, and trained on a corpus of Shakespeare's sonnets. It is an LSTM network, a type of recurrent neural network especially well-suited to time-series prediction. We are using this network to generate text by feeding it a seed phrase, then repeatedly predicting the next most likely character and feeding the result back into the system. As you can see, even a very simple model without any pre-programmed natural language processing capabilities can achieve surprisingly coherent results, not only in word construction, but even in learning some high-level features of the sonnet form. This is why neural networks are so cool!</p>
         <p>The web interface is built in Flask and hosted on Heroku.</p>
       <p><a class="btn btn-secondary" href="#" role="button">Cool &raquo;</a></p>
     </div>
@@ -43,4 +56,24 @@
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="sonnetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        test modal
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
