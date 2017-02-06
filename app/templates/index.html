@@ -5,22 +5,42 @@
 {% endblock %}
 
 {% block content %}
-<div style="padding: 30px;">
-        <div style="border: 1px solid black; padding: 10px;">
-            <form method="post">
-                {{ form.hidden_tag() }}
-                <div class="unseed-div">
-                    <button>Query the cyborg Bard</button>- he's penned an ode to {{ seed_tag }}
-                </div>
-                <div class="hidden">
-                    {{ form.seed }}
-                    {{ form.seed_tag }}
-                </div>
-                <p>Or, <button id="enable-seed" onclick="getElementById('seed-div').classList.remove('hidden');getElementById('unseed-div').classList.add('hidden')">feed him some inspiration</button>.</p>
-                <div id="seed-div" class="hidden">
-                    Bard, <button>pen me a sonnet</button> on {{ form.seed_phrase(size=30) }}
-                </div>
-            </form>
-        </div>
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">Robot Shakespeare</h1>
+    <p>I am a neural network-powered resurrection of William Shakespeare. I'm tirelessly at work writing new sonnets. I'll even write one on a topic of your choosing, if you like.</p>
+    <form method="post">
+            {{ form.hidden_tag() }}
+            <div class="hidden">
+                {{ form.seed }}
+                {{ form.seed_tag }}
+            </div>
+
+            <div class="unseed-div">
+                <p><button class="btn btn-primary">I've penned a new one just for you:</button> an ode to {{ seed_tag }}. Or, you can <a href="#" id="enable-seed" onclick="getElementById('seed-div').classList.remove('hidden');">feed me some inspiration</a>.</p>
+            </div>
+
+            <div id="seed-div" class="hidden">
+                Bard, <button class="btn btn-primary">pen me a sonnet</button> about {{ form.seed_phrase(size=30) }}
+            </div>
+    </form>
+  </div>
 </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>How does it work?</h2>
+            <p><em>0x53 48 41 4b 45</em> is a neural network written in Python with the Keras deep learning library using a TensorFlow backend, and trained on a specially formatted corpus of Shakespeare's sonnets. It is an LSTM network, a type of recurrent neural network especially well-suited to time-series prediction. We are using this network to generate text by feeding it a seed phrase, then repeatedly predicting the next most likely character and feeding the result back into the system. As you can see, even a very simple model without any pre-programmed natural language processing capabilities can achieve surprisingly coherent results, not only in word construction, but even in learning some high-level features of the sonnet form. This is why neural networks are so cool!</p>
+            <p>The web interface is built in Flask and hosted on Heroku.</p>
+          <p><a class="btn btn-secondary" href="#" role="button">Cool &raquo;</a></p>
+        </div>
+        <div class="col-md-6">
+          <h2>You've piqued my interest</h2>
+          <p>You can learn more on the GitHub.</p>
+          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+       </div>
+      </div>
+    </div>
+
 {% endblock %}

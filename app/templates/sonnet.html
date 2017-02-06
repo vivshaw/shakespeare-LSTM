@@ -5,28 +5,39 @@
 {% endblock %}
 
 {% block content %}
-<div style="padding: 30px;">
-    <h2>{{ old_seed_tag }}</h2>
-    <div style="margin-bottom:20px;">
-    {% for line in message %}
-        <p style="{% if loop.revindex0 <= 1 %}margin-left: 15px{% endif %}">{{ line }}</p>
-    {% endfor %}
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">An Ode to {{ old_seed_tag }}</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        {% for line in message %}
+            <p class="{% if loop.revindex0 <= 1 %}indent{% endif %}">{{ line }}</p>
+        {% endfor %}
     </div>
-    <div style="border: 1px solid black; padding: 10px;">
+    <div class="col-md-6">
         <form method="post">
-                {{ form.hidden_tag() }}
-                <div class="unseed-div">
-                    <button>Query the cyborg Bard</button>- he's penned an ode to {{ seed_tag }}
-                </div>
-                <div class="hidden">
-                    {{ form.seed }}
-                    {{ form.seed_tag }}
-                </div>
-                <p>Or, <button id="enable-seed" onclick="getElementById('seed-div').classList.remove('hidden');getElementById('unseed-div').classList.add('hidden')">feed him some inspiration</button>.</p>
-                <div id="seed-div" class="hidden">
-                    Bard, <button>pen me a sonnet</button> on {{ form.seed_phrase(size=30) }}
-                </div>
+            {{ form.hidden_tag() }}
+
+            <div class="hidden">
+                {{ form.seed }}
+                {{ form.seed_tag }}
+            </div>
+
+            <div class="unseed-div">
+                <p><button class="btn btn-primary">Query the Bard again?</button></p>
+                <p>I have another poem brewing. It's about {{ seed_tag }}.</p>
+                <p>Or, you could <a href="#" id="enable-seed" onclick="getElementById('seed-div').classList.remove('hidden');">feed me some inspiration</a>.</p>
+            </div>
+
+            <div id="seed-div" class="hidden">
+                Bard, <button class="btn btn-primary">pen me a sonnet</button> about {{ form.seed_phrase(size=30) }}
+            </div>
         </form>
     </div>
+   </div>
 </div>
 {% endblock %}
