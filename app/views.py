@@ -27,8 +27,7 @@ def index():
 
         return render_template('index.html',
                                title='0x53 48 41 4b 45',
-                               form=sonnet_form,
-                               seed_tag=seed_tag)
+                               form=sonnet_form)
 
     if request.method == 'POST':
         old_seed = request.form['seed']
@@ -56,6 +55,4 @@ def index():
                                title='0x53 48 41 4b 45',
                                message=message,
                                old_seed_tag=old_seed_tag,
-                               seed=seed,
-                               seed_tag=seed_tag,
                                form=sonnet_form)

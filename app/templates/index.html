@@ -17,7 +17,7 @@
             </div>
 
             <div class="unseed-div">
-                <p><button class="btn btn-primary">I've penned a new one just for you:</button> an ode to {{ seed_tag }}. Or, you can <a href="#" id="enable-seed" onclick="getElementById('seed-div').classList.remove('hidden');">feed me some inspiration</a>.</p>
+                <p><button class="btn btn-primary">I've penned a new one just for you:</button> an ode to {{ form.seed_tag.data }}. Or, you can <a href="#" id="enable-seed" onclick="getElementById('seed-div').classList.remove('hidden');">feed me some inspiration</a>.</p>
             </div>
 
             <div id="seed-div" class="hidden">
