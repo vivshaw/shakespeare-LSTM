@@ -5,11 +5,26 @@ from random import randint
 from generative_net import GenerativeNetwork
 from .forms import SonnetForm
 
+
 def tag_seed(seed):
-    word_list = seed.split(" ")
+    # Grab a chunk of four words
+    word_list = seed.split()
     i = randint(1, len(word_list) - 3)
-    words = word_list[i:i + 3]
-    return " ".join(words)
+
+    bad_start_end = ['on', 'of', 'from', "I", "O!", "and", "be"]
+
+    words = []
+    for i, word in enumerate(word_list[i:i + 3]):
+        if not word == "I" and not word == "O!":
+            word = word.strip("',.;-!:?").lower()
+        if i == 0 or i == 2:
+            if word not in bad_start_end:
+                words.append(word)
+        else:
+            words.append(word)
+
+    tag = " ".join(words)
+    return tag
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -33,7 +48,6 @@ def index():
         old_seed = request.form['seed']
         old_seed_tag = request.form['seed_tag']
         old_seed_phrase = request.form['seed_phrase']
-        print("seed", old_seed)
 
         if old_seed_phrase:
             old_seed_tag = old_seed_phrase
