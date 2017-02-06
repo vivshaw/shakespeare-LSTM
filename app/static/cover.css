@@ -9,6 +9,10 @@ a:hover {
   color: #fff;
 }
 
+.lead-link {
+    border-bottom: 1px dotted white;
+}
+
 /* Custom default button */
 .btn-secondary,
 .btn-secondary:hover,
