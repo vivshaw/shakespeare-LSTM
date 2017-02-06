@@ -1,13 +1,19 @@
 {% extends "base.html" %}
 
 {% block title %}
-    {{ title }}
+    {{ title }} - {{ old_seed_tag }}
 {% endblock %}
 
 {% block content %}
 <div style="padding: 30px;">
-        <div style="border: 1px solid black; padding: 10px;">
-            <form method="post">
+    <h2>{{ old_seed_tag }}</h2>
+    <div style="margin-bottom:20px;">
+    {% for line in message %}
+        <p style="{% if loop.revindex0 <= 1 %}margin-left: 15px{% endif %}">{{ line }}</p>
+    {% endfor %}
+    </div>
+    <div style="border: 1px solid black; padding: 10px;">
+        <form method="post">
                 {{ form.hidden_tag() }}
                 <div class="unseed-div">
                     <button>Query the cyborg Bard</button>- he's penned an ode to {{ seed_tag }}
@@ -20,7 +26,7 @@
                 <div id="seed-div" class="hidden">
                     Bard, <button>pen me a sonnet</button> on {{ form.seed_phrase(size=30) }}
                 </div>
-            </form>
-        </div>
+        </form>
+    </div>
 </div>
 {% endblock %}
