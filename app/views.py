@@ -11,7 +11,7 @@ def tag_seed(seed):
     word_list = seed.split()
     i = randint(1, len(word_list) - 3)
 
-    bad_start_end = ['on', 'of', 'from', "I", "O!", "and", "be"]
+    bad_start_end = ['on', 'of', 'from', "I", "O!", "and", "be", 'or', 'the']
 
     words = []
     for i, word in enumerate(word_list[i:i + 3]):
@@ -27,7 +27,7 @@ def tag_seed(seed):
     return tag
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/write', methods=['GET', 'POST'])
 def index():
 
     net = GenerativeNetwork("sonnets.txt", "model.yaml", "weights.hdf5")
@@ -70,3 +70,8 @@ def index():
                                message=message,
                                old_seed_tag=old_seed_tag,
                                form=sonnet_form)
+
+
+@app.route('/')
+def cover():
+    return render_template('cover.html')
