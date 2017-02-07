@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Nova+Mono');
+
 .hidden {
     display: none;
 }
@@ -22,3 +24,19 @@ body {
 .top-jumbo {
     padding-bottom: 32px;
 }
+
+h1 {
+    font-family: 'Nova Mono', sans-serif;
+    text-shadow: 2px 2px 2px #777;
+}
+
+.title-span {
+    color: #fff;
+    font-family: 'Nova Mono', sans-serif
+}
+
+.robo-text {
+    font-family: 'Nova Mono', sans-serif;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px #777;
+ }

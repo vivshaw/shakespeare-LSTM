@@ -7,20 +7,23 @@ from .forms import SonnetForm
 
 
 def tag_seed(seed):
-    # Grab a chunk of four words
+    # Grab a chunk of three words
     word_list = seed.split()
     i = randint(1, len(word_list) - 3)
 
-    bad_start_end = ['on', 'of', 'from', "I", "O!", "and", "be", 'or', 'the']
+    bad_start_end = set(['on', 'of', 'from', "I", "O!", "and", "be", 'or', 'the', 'than'])
+    bad_start = set(['of'])
+    bad_end = set(['no', 'an', 'if'])
 
     words = []
     for i, word in enumerate(word_list[i:i + 3]):
         if not word == "I" and not word == "O!":
             word = word.strip("',.;-!:?").lower()
-        if i == 0 or i == 2:
-            if word not in bad_start_end:
-                words.append(word)
-        else:
+        if i == 0 and word not in bad_start_end | bad_start:
+            words.append(word)
+        if i == 1:
+            words.append(word)
+        if i == 2 and word not in bad_start_end | bad_end:
             words.append(word)
 
     tag = " ".join(words)

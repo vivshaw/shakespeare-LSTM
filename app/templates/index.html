@@ -21,7 +21,7 @@
 
             <div class="unseed-div">
                 <p>I've penned a new one just for you: an ode to {{ form.seed_tag.data }}.</p>
-                <p><button class="btn btn-primary">Read my latest poem?</button></p>
+                <p><button class="btn btn-primary ladda-button" data-style="zoom-in"><span class="ladda-label">Read my latest poem?</span></button></p>
                 <p>Or, you can <a href="" data-toggle="modal" data-target="#sonnetModal">
   feed me some inspiration.</a></p>
             </div>
@@ -38,13 +38,12 @@
   <div class="row">
     <div class="col-md-6">
       <h2>How does it work?</h2>
-        <p><em>0x53 48 41 4b 45</em> is a neural network written in Python with the Keras deep learning library using a TensorFlow backend, and trained on a corpus of Shakespeare's sonnets. It is an LSTM network, a type of recurrent neural network especially well-suited to time-series prediction. We are using this network to generate text by feeding it a seed phrase, then repeatedly predicting the next most likely character and feeding the result back into the system. As you can see, even a very simple model without any pre-programmed natural language processing capabilities can achieve surprisingly coherent results, not only in word construction, but even in learning some high-level features of the sonnet form. This is why neural networks are so cool!</p>
-        <p>The web interface is built in Flask and hosted on Heroku.</p>
-      <p><a class="btn btn-secondary" href="#" role="button">Cool &raquo;</a></p>
+        <p><span class="robo-text">0x53 48 41 4b 45</span> is a neural network written in Python with the <a href="https://keras.io/">Keras</a> deep learning library using a <a href="https://www.tensorflow.org/">TensorFlow</a> backend, and trained on a corpus of Shakespeare's sonnets. It is an <a href="https://en.wikipedia.org/wiki/Long_short-term_memory">LSTM network</a>, a type of recurrent neural network especially well-suited to time-series prediction. We are using this network to generate text by feeding it a seed phrase, then repeatedly predicting the next most likely character and feeding the result back into the system.</p>
+        <p>The web interface is built in <a href="http://flask.pocoo.org/">Flask</a> and hosted on <a href="https://heroku.com">Heroku</a>.</p>
     </div>
     <div class="col-md-6">
       <h2>You've piqued my interest</h2>
-      <p>You can learn more on the GitHub.</p>
+        <p>You are welcome to <a href="https://github.com/vivshaw/shakespeare-LSTM">peruse the code</a> on GitHub. I also wrote a blog post explaining how you to do this yourself. If you know a bit of Python and have a few hours to kill, check it out and learn some neural network wizardry.</p>
       <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
    </div>
   </div>
@@ -61,19 +60,19 @@
         </button>
       </div>
         <form method="POST">
-      <div class="modal-body">
-          {{ form.hidden_tag() }}
-            <div class="hidden">
-                {{ form.seed }}
-                {{ form.seed_tag }}
-            </div>
+          <div class="modal-body">
+              {{ form.hidden_tag() }}
+                <div class="hidden">
+                    {{ form.seed }}
+                    {{ form.seed_tag }}
+                </div>
 
-          <p>Bard, I'd like to read about:</p>
-          {{ form.seed_phrase(size=30) }}
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Pen me a sonnet</button>
-      </div>
+              <p>Bard, I'd like to read about:</p>
+              {{ form.seed_phrase(size=30) }}
+          </div>
+          <div class="modal-footer">
+              <button type="submit" class="btn btn-primary ladda-button" data-style="zoom-in"><span class="ladda-label">Pen me a sonnet</span></button>
+          </div>
          </form>
     </div>
   </div>

@@ -33,7 +33,7 @@
 
             <div>
                 <p>I have another poem brewing. It's about {{ form.seed_tag.data }}.</p>
-                <p><button class="btn btn-primary">Read my next poem?</button></p>
+                <p><button class="btn btn-primary ladda-button" data-style="zoom-in"><span class="ladda-label">Read my next poem?</span></button></p>
                 <p>Or, you can <a href="" data-toggle="modal" data-target="#sonnetModal">feed me some inspiration.</a></p>
             </div>
         </form>
@@ -65,7 +65,7 @@
           {{ form.seed_phrase(size=30) }}
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Pen me a sonnet</button>
+          <button type="submit" class="btn btn-primary ladda-button" data-style="zoom-in"><span class="ladda-label">Pen me a sonnet</span></button>
       </div>
          </form>
     </div>
