@@ -14,7 +14,7 @@ def index():
 @app.route('/write', methods=['GET', 'POST'])
 def sonnet():
 
-    net = GenerativeNetwork("sonnets.txt", "model.yaml", "weights.hdf5")
+    net = GenerativeNetwork("sonnets.txt", "app/static/model.yaml", "app/static/weights.hdf5")
 
     if request.method == 'GET':
         seed = net.make_seed()
