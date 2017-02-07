@@ -6,8 +6,13 @@ from generative_net import GenerativeNetwork
 from .forms import SonnetForm
 
 
-@app.route('/write', methods=['GET', 'POST'])
+@app.route('/')
 def index():
+    return render_template('index.html')
+
+
+@app.route('/write', methods=['GET', 'POST'])
+def sonnet():
 
     net = GenerativeNetwork("sonnets.txt", "model.yaml", "weights.hdf5")
 
@@ -19,7 +24,7 @@ def index():
         sonnet_form.seed.data = seed
         sonnet_form.seed_tag.data = seed_tag
 
-        return render_template('index.html',
+        return render_template('intro.html',
                                title='0x53 48 41 4b 45',
                                form=sonnet_form)
 
@@ -49,11 +54,6 @@ def index():
                                message=message,
                                old_seed_tag=old_seed_tag,
                                form=sonnet_form)
-
-
-@app.route('/')
-def cover():
-    return render_template('cover.html')
 
 
 def format_sonnet(text):

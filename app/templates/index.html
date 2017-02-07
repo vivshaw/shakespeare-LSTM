@@ -1,80 +1,34 @@
-{% extends "base.html" %}
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <link href="/static/main.css" rel="stylesheet">
+    <link href="/static/cover.css" rel="stylesheet">
+</head>
+<body>
+<div class="site-wrapper">
 
-{% block title %}
-    {{ title }}
-{% endblock %}
+      <div class="site-wrapper-inner">
 
-{% block content %}
-<div class="jumbotron top-jumbo">
-  <div class="container">
-      <div class="media media-border">
-          <div class="media-body">
-              <h1 class="display-3">Robot Shakespeare</h1>
-              <p>I am a neural network-powered resurrection of William Shakespeare. I'm tirelessly at work writing new sonnets. I'll even write one on a topic of your choosing, if you like.</p>
-              <form method="post" >
-            {{ form.hidden_tag() }}
-            <div class="hidden">
-                {{ form.seed }}
-                {{ form.seed_tag }}
-                {{ form.seed_phrase }}
-            </div>
+        <div class="cover-container">
 
-            <div class="unseed-div">
-                <p>I've penned a new one just for you: an ode to {{ form.seed_tag.data }}.</p>
-                <p><button class="btn btn-primary ladda-button" data-style="zoom-in"><span class="ladda-label">Read my latest poem?</span></button></p>
-                <p>Or, you can <a href="" data-toggle="modal" data-target="#sonnetModal">
-  feed me some inspiration.</a></p>
-            </div>
-              </form>
+
+
+          <div class="inner cover">
+            <h1 class="cover-heading">ROBOT SHAKESPEARE</h1>
+              <p class="lead">What would happen if we revived William Shakespeare in a horrible robot body? <a href="/write" class="lead-link">Probably this</a>.</p>
+            <p class="lead">
+              <a href="/write" class="btn btn-lg btn-secondary">The Bard is Back</a>
+            </p>
           </div>
-          <img class="d-flex align-self-center ml-3" src="/static/shake-small.png" alt="Generic placeholder image">
+
+        </div>
+
       </div>
 
-
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <h2>How does it work?</h2>
-        <p><span class="robo-text">0x53 48 41 4b 45</span> is a neural network written in Python with the <a href="https://keras.io/">Keras</a> deep learning library using a <a href="https://www.tensorflow.org/">TensorFlow</a> backend, and trained on a corpus of Shakespeare's sonnets. It is an <a href="https://en.wikipedia.org/wiki/Long_short-term_memory">LSTM network</a>, a type of recurrent neural network especially well-suited to time-series prediction. We are using this network to generate text by feeding it a seed phrase, then repeatedly predicting the next most likely character and feeding the result back into the system.</p>
-        <p>The web interface is built in <a href="http://flask.pocoo.org/">Flask</a> and hosted on <a href="https://heroku.com">Heroku</a>.</p>
     </div>
-    <div class="col-md-6">
-      <h2>You've piqued my interest</h2>
-        <p>You are welcome to <a href="https://github.com/vivshaw/shakespeare-LSTM">peruse the code</a> on GitHub. I also wrote a blog post explaining how you to do this yourself. If you know a bit of Python and have a few hours to kill, check it out and learn some neural network wizardry.</p>
-      <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-   </div>
-  </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="sonnetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">What shall I write, O muse?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-        <form method="POST">
-          <div class="modal-body">
-              {{ form.hidden_tag() }}
-                <div class="hidden">
-                    {{ form.seed }}
-                    {{ form.seed_tag }}
-                </div>
-
-              <p>Bard, I'd like to read about:</p>
-              {{ form.seed_phrase(size=30) }}
-          </div>
-          <div class="modal-footer">
-              <button type="submit" class="btn btn-primary ladda-button" data-style="zoom-in"><span class="ladda-label">Pen me a sonnet</span></button>
-          </div>
-         </form>
-    </div>
-  </div>
-</div>
-{% endblock %}
+</body>
+</html>
