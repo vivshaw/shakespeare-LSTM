@@ -1,9 +1,8 @@
-import re
 from app import app
 from flask import render_template, request
 from random import randint
-from generative_net import GenerativeNetwork
 from .forms import SonnetForm
+from network.generate import GenerativeNetwork
 
 
 @app.route('/')
