@@ -1,5 +1,6 @@
 Flask==0.12
 Flask-WTF==0.14.2
+gunicorn==19.6.0
 h5py==2.6.0
 Keras==1.2.1
 tensorflow==0.12.1
