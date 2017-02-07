@@ -41,8 +41,7 @@ class GenerativeNetwork:
             activations[0, 0, prediction] = 1
             X = np.concatenate((X[:, 1:, :], activations), axis=1)
 
-        formatted_text = self.format(generated_text)
-        return formatted_text
+        return generated_text
 
     def make_seed(self, seed_phrase=""):
         if seed_phrase:
@@ -55,20 +54,3 @@ class GenerativeNetwork:
             pattern = self.corpus[seed:seed + self.sentence_length]
 
         return pattern
-
-    def format(self, text):
-        formatted = text.split("\n")
-
-        # The first and last line cut off in the middle, so we'll ditch them
-        formatted = formatted[1:len(formatted) - 1]
-
-        # Eliminate empty strings, strings that are just newlines, or other improper strings
-        formatted = [string for string in formatted if len(string) > 3]
-
-        # Put a period on our last string, replacing other punctuation if it's there.
-        if formatted[-1][-1].isalnum():
-            formatted[-1] += "."
-        else:
-            formatted[-1] = formatted[-1][:-1] + "."
-
-        return formatted
