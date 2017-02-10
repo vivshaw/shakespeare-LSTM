@@ -1,5 +1,7 @@
 # shakespeare-LSTM
 
+![Robot Shakespeare](https://vivshaw.github.io/images/robot-shakespeare-teaser.png)
+
 a Keras neural network trained to write Shakespearean sonnets, with an [interactive Flask interface](http://robot-shakespeare.herokuapp.com/).
 
 ## Requirements
