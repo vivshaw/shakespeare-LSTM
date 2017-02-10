@@ -3,7 +3,7 @@ from keras.models import Sequential
 from keras.layers import LSTM, Dense, Activation
 from keras.callbacks import ModelCheckpoint
 
-with open("sonnets.txt") as corpus_file:
+with open("../sonnets.txt") as corpus_file:
     corpus = corpus_file.read()
 print("Loaded a corpus of {0} characters".format(len(corpus)))
 
@@ -32,7 +32,6 @@ print("Sliced our corpus into {0} sentences of length {1}".format(num_sentences,
 
 # Vectorize our data and labels. We want everything in one-hot
 # because smart data encoding cultivates phronesis and virtue.
-print("Let's get vectorized!")
 print("Vectorizing X and y...")
 X = np.zeros((num_sentences, sentence_length, num_chars), dtype=np.bool)
 y = np.zeros((num_sentences, num_chars), dtype=np.bool)
@@ -59,7 +58,7 @@ with open('model.yaml', 'a') as model_file:
     model_file.write(architecture)
 
 # Set up checkpoints
-file_path="weights-{epoch:02d}-{loss:.4f}.hdf5"
+file_path="weights-{epoch:02d}-{loss:.3f}.hdf5"
 checkpoint = ModelCheckpoint(file_path, monitor="loss", verbose=1, save_best_only=True, mode="min")
 callbacks = [checkpoint]
 

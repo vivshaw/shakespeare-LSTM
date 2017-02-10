@@ -4,6 +4,7 @@ from random import randint
 from .forms import SonnetForm
 from network.generate import GenerativeNetwork
 
+net = GenerativeNetwork("sonnets.txt", "app/static/model.yaml", "app/static/weights.hdf5")
 
 @app.route('/')
 def index():
@@ -12,9 +13,6 @@ def index():
 
 @app.route('/write', methods=['GET', 'POST'])
 def sonnet():
-
-    net = GenerativeNetwork("sonnets.txt", "app/static/model.yaml", "app/static/weights.hdf5")
-
     if request.method == 'GET':
         seed = net.make_seed()
         seed_tag = tag_seed(seed)

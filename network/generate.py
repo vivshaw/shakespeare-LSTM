@@ -2,6 +2,7 @@ import numpy as np
 from keras.models import model_from_yaml
 from random import randint
 
+
 class GenerativeNetwork:
     def __init__(self, corpus_path, model_path, weights_path):
         with open(corpus_path) as corpus_file:
