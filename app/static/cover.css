@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Nova+Mono');
+
 /* Links */
 a,
 a:focus,
@@ -7,6 +9,11 @@ a:hover {
 
 .lead-link {
     border-bottom: 1px dotted white;
+}
+
+.cover-heading {
+    font-family: 'Nova Mono', sans-serif;
+    text-shadow: 2px 2px 2px #777;
 }
 
 /* Custom default button */
@@ -86,7 +93,7 @@ body {
   }
   /* Handle the widths */
   .cover-container {
-    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+    width: 90%; /* Must be percentage or pixels for horizontal alignment */
   }
 }
 

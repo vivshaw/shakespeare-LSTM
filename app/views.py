@@ -22,7 +22,7 @@ def sonnet():
         sonnet_form.seed_tag.data = seed_tag
 
         return render_template('intro.html',
-                               title='0x53 48 41 4b 45',
+                               title='ROBOT SHAKESPEARE',
                                form=sonnet_form)
 
     if request.method == 'POST':
@@ -47,7 +47,7 @@ def sonnet():
         sonnet_form.seed_phrase.data = ""
 
         return render_template('sonnet.html',
-                               title='0x53 48 41 4b 45',
+                               title='ROBOT SHAKESPEARE',
                                message=message,
                                old_seed_tag=old_seed_tag,
                                form=sonnet_form)
